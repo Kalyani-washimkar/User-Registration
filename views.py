@@ -6,7 +6,7 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, 'verify/index.html')
+    return render(request, 'enroll/index.html')
 
 def register(request):
 
@@ -21,7 +21,7 @@ def register(request):
         messages.success(request, 'Your account has been successfully created.')
         return redirect('signin')
 
-    return render(request, 'verify/register.html')
+    return render(request, 'enroll/register.html')
 
 def signin(request):
 
@@ -34,12 +34,12 @@ def signin(request):
         if user is not None:
             login(request, user)
             username = user.username
-            return render(request, 'verify/index.html', {'username' : username})
+            return render(request, 'enroll/index.html', {'username' : username})
         else:
             messages.error(request, 'Wrong username or password!')
             return redirect('home')
 
-    return render(request, 'verify/signin.html')
+    return render(request, 'enroll/signin.html')
 
 def signout(request):
     logout(request)
